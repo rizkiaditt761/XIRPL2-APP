@@ -14,7 +14,7 @@ class LaporanMasukController extends Controller
             'breadCrumb2' => 'Index'
         ]);
     }
-
+    //detail laporan
     public function detail(){
         return view('pages.admin.laporanmasuk.detail', [
             'title' => 'APM | Laporan Masuk',
@@ -22,5 +22,52 @@ class LaporanMasukController extends Controller
             'breadCrumb1' => 'Laporan Masuk',
             'breadCrumb2' => 'Detail'
         ]);
+    }
+    //crud laporan
+    public function getDataLaporan(Request $request){
+        $orderBy ='pengaduan.id';
+    switch ($request->input('order.0.column')){
+        case 0:
+            $orderBy = 'pengaduan.tglpengaduan';
+            break;
+        case '1';
+            $orderBy = 'pengaduan.judul';
+            break;
+        case '2';
+            $orderBy = 'users.name';
+            break;
+        case '3';
+            $orderBy = 'kategoripengaduan.namakategori';
+            break;
+        case '4';
+            $orderBy = 'pengaduan.status';
+            break;
+    }
+    // Get Data Nya
+    $data = DB::table('pengaduan')
+            ->leftJoin('users', 'pengaduan.masyarakat_id', '=', 'users.id')
+            ->leftJoin('kategoripengaduan', 'pengaduan.kategori_id', '=', 'kategoripengaduan.id')
+            ->select('pengaduan.*', 'users.name', 'kategoripengaduan.namakategori', 'users.name', 'kategoripengaduan.namakategori');
+
+    // Function filter dari inputan search
+    if($request->input('search.value')!= null){
+        $data = $data->where(function($q)use($request){
+            $q->whereRaw('LOWER(pengaduan.judul) like ?',['%'. $request->input('search.value').'%'])
+            ->orWhereRaw('LOWER(users.name) like ?',['%'. $request->input('search.value').'%'])
+            ->orWhereRaw('LOWER(kategoripengaduan.namakategori) like ?',['%'. $request->input('search.value').'%']);
+        });
+    }
+
+    $recordsFiltered = $data->get()->count(); // menampilkan jumlah isi record yang terfilter
+    if($request->input('length') != -1) $data = $data->skip($request->input('start'))->take($request->input('length'));
+    $data = $data->orderBy($orderBy,$request->input('order.0.dir'))->get();
+    $recordsTotal = $data->count(); // menampilkan jumlah seluruh data
+    return response()->json([
+       'draw' => $request->input('draw'),
+       'recordsTotal' => $recordsTotal,
+       'recordsFiltered' => $recordsFiltered,
+       'data' => $data
+    ]);
+    
     }
 }
