@@ -5,7 +5,9 @@
             <div class="container mt-3">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-secondary btn-md"><li class="fa fa-print"></li> Cetak Laporan</button>
+                        <button onclick="window.print()" class="btn btn-secondary">
+                            <i class="fa fa-print"></i> Cetak Laporan
+                        </button>
                         <a href="/generatereport" class="btn btn-warning btn-md float-sm-right"><li class="fa fa-undo"></li> Kembali</a>
                     </div>
                     <div class="card-body report">
@@ -19,7 +21,19 @@
                                 <hr>
                             </div>
                             <div class="col-md-12 col-lg-12">
-                                Laporan Pengaduan Bulan : Januari 2024
+                                <h5>Laporan Pengaduan</h5>
+
+                                @if($bulan || $tahun)
+                                    Periode :
+                                    {{ $bulan ?? '-' }}
+                                    {{ $tahun ?? '' }}
+                                    <br>
+                                @endif
+
+                                @if($status)
+                                    Status :
+                                    {{ $status }}
+                                @endif
                             </div>
                         </div>
                         <!-- <div class="row"> -->
@@ -37,30 +51,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($laporan as $item)
                                     <tr>
-                                        <td>1</td>
-                                        <td>12 Januari 2024</td>
-                                        <td>Pelecehan</td>
-                                        <td>Teguh</td>
-                                        <td>Process</td>
-                                        <td></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->tglpengaduan }}</td>
+                                        <td>{{ $item->namakategori }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->status }}</td>
+                                        <td>{{ $item->judul }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>12 Januari 2024</td>
-                                        <td>Pelecehan</td>
-                                        <td>Teguh</td>
-                                        <td>Process</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>12 Januari 2024</td>
-                                        <td>Pencemaran</td>
-                                        <td>Teguh</td>
-                                        <td>Selesai</td>
-                                        <td></td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -5,8 +5,8 @@
             <div class="container mt-3">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-secondary btn-md">
-                            <li class="fa fa-print"></li> Cetak Laporan
+                        <button onclick="window.print()" class="btn btn-secondary">
+                            <i class="fa fa-print"></i> Cetak Laporan
                         </button>
                         <a href="/generatereport" class="btn btn-warning btn-md float-sm-right">
                             <li class="fa fa-undo"></li> Kembali
@@ -39,12 +39,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($rekap as $item)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Pelecehan</td>
-                                        <td>10</td>
-                                        <td></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->namakategori }}</td>
+                                        <td>{{ $item->jumlah }}</td>
+                                        <td>-</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

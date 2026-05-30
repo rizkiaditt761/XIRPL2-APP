@@ -11,11 +11,12 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <form action="/generatereport/generateperiode" method="GET">
                                     <div class="form form-group">
                                         <label for="selectBulan">
                                             Pilih Bulan
                                         </label>
-                                        <select name="selectBulan" id="selectBulan" class="form form-control">
+                                        <select name="bulan" class="form-control">
                                             <option value="">-- Pilih Bulan --</option>
                                             <option value="Januari">Januari</option>
                                             <option value="Februari">Februari</option>
@@ -33,23 +34,29 @@
                                     </div>
                                     <div class="form form-group">
                                         <label for="selectTahun">Pilih Tahun</label>
-                                        <select name="selectTahun" id="selectTahun" class="form form-control">
+                                        <select name="tahun" class="form-control">
                                             <option value="">-- Pilih Tahun --</option>
-                                            <option value="">2022</option>
-                                            <option value="">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
                                         </select>
                                     </div>
                                     <div class="form form-group">
                                         <label for="selectStatus">Pilih Status</label>
-                                        <select name="selectStatus" id="selectStatus" class="form form-control">
+                                        <select name="status" class="form-control">
                                             <option value="">ALL</option>
-                                            <option value="">Process</option>
-                                            <option value="">Selesai</option>
+                                            <option value="Process">Process</option>
+                                            <option value="Selesai">Selesai</option>
                                         </select>
                                     </div>
                                     <div class="form form-group">
-                                        <a href="/generatereport/generateperiode" class="btn btn-primary btn-lg"><li class="fa fa-print"></li> Cetak </a>
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <li class="fa fa-print"></li> Cetak
+                                        </button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -63,11 +70,12 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <form action="/generatereport/generateperiode" method="GET">
                                     <div class="form form-group">
                                         <label for="selectBulan">
                                             Pilih Bulan
                                         </label>
-                                        <select name="selectBulan" id="selectBulan" class="form form-control">
+                                        <select name="bulan" class="form-control">
                                             <option value="">-- Pilih Bulan --</option>
                                             <option value="Januari">Januari</option>
                                             <option value="Februari">Februari</option>
@@ -85,15 +93,21 @@
                                     </div>
                                     <div class="form form-group">
                                         <label for="selectTahun">Pilih Tahun</label>
-                                        <select name="selectTahun" id="selectTahun" class="form form-control">
+                                        <select name="tahun" class="form-control">
                                             <option value="">-- Pilih Tahun --</option>
-                                            <option value="">2022</option>
-                                            <option value="">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
                                         </select>
                                     </div>
                                     <div class="form form-group">
-                                        <a href="/generatereport/generaterekap" class="btn btn-primary btn-lg"><li class="fa fa-print"></li> Cetak </a>
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <li class="fa fa-print"></li> Cetak
+                                        </button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
