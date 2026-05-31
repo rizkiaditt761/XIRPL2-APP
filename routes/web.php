@@ -31,6 +31,7 @@ route::get('/generatereport/generateperiode', [GenerateReportController::class, 
 route::get('/generatereport/generaterekap', [GenerateReportController::class, 'generaterekap']);
 route::get('/profile', [ProfileController::class, 'index']);
 route::get('/profile/editprofile', [ProfileController::class, 'editprofile']);
+Route::post('/profile/update', [ProfileController::class, 'updateprofile']);
 route::get('/loginadmin', [loginAdminController::class, 'index']);
 
 route::resource('/pengaduanku', UserPengaduankuController::class);

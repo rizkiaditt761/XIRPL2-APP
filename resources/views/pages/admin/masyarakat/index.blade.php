@@ -22,7 +22,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($dataMasyarakat as $masyarakat)
+                                       @foreach ($dataMasyarakat as $masyarakat)
                                             <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $masyarakat->nik }}</td>

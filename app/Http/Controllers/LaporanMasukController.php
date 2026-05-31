@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class LaporanMasukController extends Controller
 {
@@ -30,16 +32,16 @@ class LaporanMasukController extends Controller
         case 0:
             $orderBy = 'pengaduan.tglpengaduan';
             break;
-        case '1';
+        case '1':
             $orderBy = 'pengaduan.judul';
             break;
-        case '2';
+        case '2':
             $orderBy = 'users.name';
             break;
-        case '3';
+        case '3':
             $orderBy = 'kategoripengaduan.namakategori';
             break;
-        case '4';
+        case '4':
             $orderBy = 'pengaduan.status';
             break;
     }
@@ -47,7 +49,7 @@ class LaporanMasukController extends Controller
     $data = DB::table('pengaduan')
             ->leftJoin('users', 'pengaduan.masyarakat_id', '=', 'users.id')
             ->leftJoin('kategoripengaduan', 'pengaduan.kategori_id', '=', 'kategoripengaduan.id')
-            ->select('pengaduan.*', 'users.name', 'kategoripengaduan.namakategori', 'users.name', 'kategoripengaduan.namakategori');
+            ->select('pengaduan.*', 'users.name', 'kategoripengaduan.namakategori');
 
     // Function filter dari inputan search
     if($request->input('search.value')!= null){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\KategoriPengaduan;
 
 class KategoriPengaduanController extends Controller
 {
@@ -11,12 +12,13 @@ class KategoriPengaduanController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.kategori.index', [
-            'title' => 'APM | Kategori Pengaduan',
-            'header' => 'Kategori Pengaduan',
-            'breadCrumb1' => 'Kategori Pengaduan',
-            'breadCrumb2' => 'Index'
-        ]);
+       return view('pages.admin.kategori.index', [
+        'title' => 'APM | Kategori Pengaduan',
+        'header' => 'Kategori Pengaduan',
+        'breadCrumb1' => 'Kategori Pengaduan',
+        'breadCrumb2' => 'Index',
+        'dataKategori' => KategoriPengaduan::all()
+    ]);
     }
 
     /**
@@ -25,11 +27,10 @@ class KategoriPengaduanController extends Controller
     public function create()
     {
         return view('pages.admin.kategori.create', [
-            'title' => 'APM | Kategori Pengaduan',
-            'header' => 'Kategori Pengaduan',
-            'breadCrumb1' => 'Kategori Pengaduan',
-            'breadCrumb2' => 'Create'
-        ]);
+            'title' => 'APM | Kategori Pengaduan', 
+            'header' => 'Kategori Pengaduan', 
+            'breadCrumb1' => 'Kategori Pengaduan', 
+            'breadCrumb2' => 'Create']);
     }
 
     /**
@@ -37,7 +38,17 @@ class KategoriPengaduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+        'textKategori' => 'required',
+        'textDeskripsi' => 'required'
+    ]);
+
+    KategoriPengaduan::create([
+        'namakategori' => $request->textKategori,
+        'deskripsi' => $request->textDeskripsi
+    ]);
+
+    return redirect('/kategori');
     }
 
     /**
@@ -54,11 +65,12 @@ class KategoriPengaduanController extends Controller
     public function edit(string $id)
     {
         return view('pages.admin.kategori.edit', [
-            'title' => 'APM | Kategori Pengaduan',
-            'header' => 'Kategori Pengaduan',
-            'breadCrumb1' => 'Kategori Pengaduan',
-            'breadCrumb2' => 'Edit'
-        ]);
+        'title' => 'APM | Kategori Pengaduan',
+        'header' => 'Kategori Pengaduan',
+        'breadCrumb1' => 'Kategori Pengaduan',
+        'breadCrumb2' => 'Edit',
+        'dataKategori' => KategoriPengaduan::where('id',$id)->first()
+    ]);
     }
 
     /**
@@ -66,7 +78,17 @@ class KategoriPengaduanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         $request->validate([
+        'textKategori' => 'required',
+        'textDeskripsi' => 'required'
+    ]);
+
+    KategoriPengaduan::where('id',$id)->update([
+        'namakategori' => $request->textKategori,
+        'deskripsi' => $request->textDeskripsi
+    ]);
+
+    return redirect('/kategori');
     }
 
     /**

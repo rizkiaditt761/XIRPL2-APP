@@ -12,6 +12,8 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <form action="/profile/update" method="POST">
+                                    @csrf
                                 <div class="row">
                                     <div class="col-12 col-sm-12">
                                         <div class="card-tabs">
@@ -40,28 +42,36 @@
                                                                 <label for="textNik">NIK</label>
                                                                 <input type="text" name="textNik" id="textNik"
                                                                     class="form form-control"
-                                                                    placeholder="Contoh : 320717XXXXXXX">
+                                                                    placeholder="Contoh : 320717XXXXXXX" value="{{ $user->nik }}">
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="textNama">Nama</label>
                                                                 <input type="text" name="textNama" id="textNama"
                                                                     class="form form-control"
-                                                                    placeholder="Nama Lengkap">
+                                                                    placeholder="Nama Lengkap" value="{{ $user->name }}">
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="selectJenisKelamin">Jenis Kelamin</label>
                                                                 <select name="selectJenisKelamin"
                                                                     id="selectJenisKelamin" class="form form-control">
                                                                     <option value="">-- Pilih Jenis Kelamin --</option>
-                                                                    <option value="Laki-laki">Laki-laki</option>
-                                                                    <option value="Perempuan">Perempuan</option>
+                                                                    <option value="Laki-laki"
+                                                                        {{ $user->jeniskelamin == 'Laki-laki' ? 'selected' : '' }}>
+                                                                        Laki-laki
+                                                                    </option>
+
+                                                                    <option value="Perempuan"
+                                                                        {{ $user->jeniskelamin == 'Perempuan' ? 'selected' : '' }}>
+                                                                        Perempuan
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="textNoTelepon">No Telepon</label>
-                                                                <input type="text" class="form form-control"
+                                                                <input type="text" name="textNoTelepon"
+                                                                   " class="form form-control"
                                                                     id="textNoTelepon"
-                                                                    placeholder="contoh : +627788788787">
+                                                                    placeholder="contoh : +627788788787" value="{{ $user->notelepon }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
@@ -69,7 +79,7 @@
                                                                 <label for="textAlamat">Alamat</label>
                                                                 <textarea name="textAlamat" id="textAlamat" cols="30"
                                                                     rows="1" class="form form-control"
-                                                                    placeholder="Alamat Lengkap"></textarea>
+                                                                    placeholder="Alamat Lengkap">{{ $user->alamat }}</textarea>
                                                             </div>
 
                                                             <div class="form form-group">
@@ -77,21 +87,28 @@
                                                                 <select name="selectJabatan" id="selectJabatan"
                                                                     class="form form-control">
                                                                     <option value="">-- Pilih Jabatan --</option>
-                                                                    <option value="Admin">Admin</option>
-                                                                    <option value="Petugas">Petugas</option>
+                                                                    <option value="Admin"
+                                                                        {{ $user->role == 'Admin' ? 'selected' : '' }}>
+                                                                        Admin
+                                                                    </option>
+
+                                                                    <option value="Petugas"
+                                                                        {{ $user->role == 'Petugas' ? 'selected' : '' }}>
+                                                                        Petugas
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                             <div class="form form-group">
                                                                 <label for="textEmail">Email</label>
                                                                 <input type="email" name="textEmail"
                                                                     class="form form-control" id="textEmail"
-                                                                    placeholder="contoh : apm@gmail.com">
+                                                                    placeholder="contoh : apm@gmail.com" value="{{ $user->email }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 col-sm-12">
-                                                            <a href="pegawai.html" class="btn btn-success btn-md">
-                                                                <li class="fa fa-save"></li> Simpan
-                                                            </a href="/masyarakat.html">
+                                                            <button type="submit" class="btn btn-success btn-md">
+                                                                    <li class="fa fa-save"></li> Simpan
+                                                                </button>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade" id="custom-tabs-three-profile"
@@ -108,9 +125,9 @@
                                                                     class="form form-control" id="textNewPassword">
                                                             </div>
                                                             <div class="form form-group">
-                                                                <a href="pegawai.html" class="btn btn-success btn-md">
-                                                                    <li class="fa fa-save"></li> Ubah Password
-                                                                </a>
+                                                                <button type="submit" class="btn btn-success btn-md">
+                                                                    <li class="fa fa-save"></li> Simpan
+                                                                </button>
                                                             </div>
                                                         </div>
 
@@ -121,6 +138,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>

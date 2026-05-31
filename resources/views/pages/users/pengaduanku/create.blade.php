@@ -31,7 +31,7 @@
                                 accept="image">
                         </div>
                         <div class="form form-group mt-3">
-                            <a href="user-pengaduanku.html" class="btn btn-success btn-md"> Simpan</a>
+                            <button type="submit" class="btn btn-success btn-md"> Simpan</button>
                         </div>
                     </div>
                 </div>

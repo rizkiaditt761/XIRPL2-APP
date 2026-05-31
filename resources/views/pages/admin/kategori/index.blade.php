@@ -1,6 +1,6 @@
 @extends('layouts.layoutsadmin')
 @section('content')
- <section class="content">
+<section class="content">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -23,29 +23,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($dataKategori as $kategori)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Kekerasan</td>
-                                            <td>Deskripsi tentang jenis pengaduan kekerasan</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $kategori->namakategori }}</td>
+                                            <td>{{ $kategori->deskripsi }}</td>
+
                                             <td>
-                                                <a href="/kategori/1/edit" class="btn btn-warning btn-xs"
-                                                    title="Edit Masyarakat">
+                                                <a href="/kategori/{{ $kategori->id }}/edit"
+                                                class="btn btn-warning btn-xs">
+
                                                     <li class="fa fa-edit"></li>
                                                 </a>
+
+                                                    <a href=""
+                                                    class="btn btn-primary btn-xs">
+                                                        <li class="fa fa-list"></li>
+                                                    </a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Pencemaran</td>
-                                            <td>Deskripsi tentang jenis pengaduan Pencemaran Lingkungan</td>
-                                            <td>
-                                                <a href="/kategori/2/edit" class="btn btn-warning btn-xs"
-                                                    title="Edit Masyarakat">
-                                                    <li class="fa fa-edit"></li>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
