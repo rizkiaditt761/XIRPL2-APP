@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="container mt-3">
+            <div class="container-fluid mt-3">
                 <div class="card">
                     <div class="card-header">
                         <button onclick="window.print()" class="btn btn-secondary">
