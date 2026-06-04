@@ -103,8 +103,8 @@
                                         </select>
                                     </div>
                                     <div class="form form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            <li class="fa fa-print"></li> Cetak
+                                        <button type="submit"  class="btn btn-primary btn-lg">
+                                            <a href="/generatereport/generaterekap"><li class="fa fa-print"></li> Cetak </a>
                                         </button>
                                     </div>
                                     </form>

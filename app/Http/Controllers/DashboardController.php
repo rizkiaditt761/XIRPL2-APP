@@ -13,5 +13,7 @@ class DashboardController extends Controller
             'breadCrumb1' => 'Dashboard',
             'breadCrumb2' => 'Index'
         ]);
+
+        
     }
 }
